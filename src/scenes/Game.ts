@@ -2,6 +2,8 @@ import { Scene } from "phaser";
 import { ASSET_KEYS } from "../constants/assets";
 
 export class Game extends Scene {
+  #buttons: Phaser.GameObjects.Rectangle[] = [];
+
   constructor() {
     super("Game");
   }
@@ -14,23 +16,15 @@ export class Game extends Scene {
   }
 
   create() {
-    this.add.image(512, 384, "background");
-    this.add.image(512, 350, "logo").setDepth(100);
-    this.add
-      .text(
-        512,
-        490,
-        "Make something fun!\nand share it with us:\nsupport@phaser.io",
-        {
-          fontFamily: "Arial Black",
-          fontSize: 38,
-          color: "#ffffff",
-          stroke: "#000000",
-          strokeThickness: 8,
-          align: "center",
-        }
-      )
-      .setOrigin(0.5)
-      .setDepth(100);
+    const button1 = this.#createButton(20, 20, 0xdb0a8b);
+    const button2 = this.#createButton(230, 20, 0x08c418);
+    const button3 = this.#createButton(20, 230, 0xe6e600);
+    const button4 = this.#createButton(230, 230, 0x0066cc);
+
+    this.#buttons = [button1, button2, button3, button4];
+  }
+
+  #createButton(x: number, y: number, color: number) {
+    return this.add.rectangle(x, y, 200, 200, color).setOrigin(0).setAlpha(0.4);
   }
 }
