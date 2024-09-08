@@ -1,0 +1,6 @@
+export enum ASSET_KEYS {
+  SOUND1 = "SOUND1",
+  SOUND2 = "SOUND2",
+  SOUND3 = "SOUND3",
+  SOUND4 = "SOUND4",
+}
