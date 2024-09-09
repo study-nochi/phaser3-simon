@@ -1,11 +1,21 @@
 import { Scene } from "phaser";
 import { ASSET_KEYS } from "../constants/assets";
+import { GAME_STATE } from "../constants/state";
+import Simon from "../simon";
 
 export class Game extends Scene {
   #buttons: Phaser.GameObjects.Rectangle[] = [];
+  #gameState: GAME_STATE;
+  #simonGame: Simon;
 
   constructor() {
     super("Game");
+  }
+
+  init() {
+    this.#buttons = [];
+    this.#gameState = GAME_STATE.INITIAL;
+    this.#simonGame = new Simon()
   }
 
   preload() {
